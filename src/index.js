@@ -17,18 +17,18 @@ var gridOptions = {
         sortable: true,
     },
     onCellEditingStarted: function (event) {
-
         console.log('cellEditingStarted');
     },
     onCellEditingStopped: function (event) {
         console.log('cellEditingStopped');
     },
     onCellValueChanged: function (event) {
-        console.log(cellDef.rowIndex);
-    console.log(cellDef.column.getId());
-    console.log(cellDef.floating);
+        console.log(event.data.make);
+        console.log(event.data.model);
+        console.log(event.data.price);
+        console.log(event.rowIndex);
         console.log(
-            'onCellValueChanged: ' + event.colDef.field + ' = ' + event.newValue
+            'onCellValueChanged: ' + event.colDef.field + ' ' + event.oldValue + ' -> ' + event.newValue
         );
     },
 };
