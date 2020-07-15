@@ -1,19 +1,20 @@
 var columnDefs = [
     {headerName: "Make", field: "make"},
     {headerName: "Model", field: "model"},
-    {headerName: "Price", field: "price", editable:true},
+    {headerName: "Price", field: "price", editable: true},
 ];
 
 // let the grid know which columns and what data to use
 var gridOptions = {
     pagination: true,
     columnDefs: columnDefs,
+    singleClickEdit: true,
     defaultColDef: {
         flex: 1,
         minWidth: 110,
         resizable: true,
-        filter:true,
-        sortable:true,
+        filter: true,
+        sortable: true,
     },
     onCellEditingStarted: function (event) {
 
@@ -21,6 +22,14 @@ var gridOptions = {
     },
     onCellEditingStopped: function (event) {
         console.log('cellEditingStopped');
+    },
+    onCellValueChanged: function (event) {
+        console.log(cellDef.rowIndex);
+    console.log(cellDef.column.getId());
+    console.log(cellDef.floating);
+        console.log(
+            'onCellValueChanged: ' + event.colDef.field + ' = ' + event.newValue
+        );
     },
 };
 
