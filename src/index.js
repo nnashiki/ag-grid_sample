@@ -1,7 +1,7 @@
 var columnDefs = [
-    {headerName: "Make", field: "make", sortable: true, filter: true, editable:true},
-    {headerName: "Model", field: "model", sortable: true, filter: true, editable:true},
-    {headerName: "Price", field: "price", sortable: true, filter: true, editable:true},
+    {headerName: "Make", field: "make"},
+    {headerName: "Model", field: "model"},
+    {headerName: "Price", field: "price", editable:true},
 ];
 
 // let the grid know which columns and what data to use
@@ -11,8 +11,9 @@ var gridOptions = {
     defaultColDef: {
         flex: 1,
         minWidth: 110,
-        editable: true,
         resizable: true,
+        filter:true,
+        sortable:true,
     },
     onCellEditingStarted: function (event) {
 
