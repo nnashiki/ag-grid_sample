@@ -4,6 +4,20 @@ var columnDefs = [
     {headerName: "Price", field: "price", editable: true},
 ];
 
+function postData(url = ``, data = {}) {
+    // 既定のオプションには * が付いています
+    return fetch(url, {
+        method: "POST", // *GET, POST, PUT, DELETE, etc.
+        mode: "cors", // no-cors, cors, *same-origin
+        cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+        headers: {
+            "Content-Type": "application/json; charset=utf-8",
+        },
+        body: JSON.stringify(data), // 本文のデータ型は "Content-Type" ヘッダーと一致する必要があります
+    })
+        .then(response => response.json()); // レスポンスの JSON を解ｓ析
+}
+
 // let the grid know which columns and what data to use
 var gridOptions = {
     pagination: true,
@@ -30,6 +44,9 @@ var gridOptions = {
         console.log(
             'onCellValueChanged: ' + event.colDef.field + ' ' + event.oldValue + ' -> ' + event.newValue
         );
+        postData(`http://localhost:8080/item`, {"make": event.data.make, "model":event.data.model, "price":event.data.price})
+            .then(data => console.log(JSON.stringify(data))) // JSON-string from `response.json()` call
+            .catch(error => console.error(error));
     },
 };
 
