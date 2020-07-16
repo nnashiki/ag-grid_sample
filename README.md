@@ -1,6 +1,10 @@
 # ag-grid_sample
 ag-grid を試してみる
 
+gridの変更イベントを発火させて、postする。
+postを受け取るAPI(fastapi)を用意。
+
+![](./output.gif)
 
 # フロント
 `docker run --rm --name sample -p 3000:80 -v $PWD/frontend/src:/usr/share/nginx/html -d nginx`
